@@ -2,5 +2,11 @@
 - x build api
 - x make route searchbooks
 - x get all books with keyword: https://gutendex.com/books/?search=nietzsche
-- .. build in search hard-coded
-- .. with input textbox
+- x build in search hard-coded
+- x with input textbox
+
+
+- .. sass
+- .. top area fixed
+- .. waiting spinner
+- show with more fields and graphic, links to books

@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import './App.css'
+import './App.scss'
 
 function App() {
 	const [books, setBooks] = useState([]);
@@ -26,16 +26,14 @@ function App() {
 
 	return (
 		<div className="App">
+			<h1>Gutenberg Project Books Search</h1>
 			{books.length === 0 && (
 				<div>Loading...</div>
 			)}
 			{books.length > 0 && (
 				<>
-					<input type="text" value={searchText} onChange={(e) => setSearchText(e.target.value)} />
-					<button onClick={handleButtonClick}>Search</button>
-					<div>
-						There are {books.length} books:
-					</div>
+					<input class="searchText" autoFocus type="text" value={searchText} onChange={(e) => setSearchText(e.target.value)} />
+					<button className="btnSearch" onClick={handleButtonClick}>Search</button>
 					<ul>
 						{books.map((book, i) => {
 							return (

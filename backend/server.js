@@ -1,7 +1,9 @@
 import express from 'express';
+import cors from 'cors';
 
 const app = express();
 const port = 3055;
+app.use(cors());
 
 app.get('/', (req, res) => {
 	res.send('This is the Gutenberg API. Use /searchbooks');

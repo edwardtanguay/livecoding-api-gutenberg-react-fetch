@@ -1,16 +1,8 @@
 - x install react
 - x build api
-- .. make route searchbooks
-
+- x make route searchbooks
+- .. get all books with keyword: https://gutendex.com/books/?search=nietzsche
 
 =====================================
-
-- server.js
-	- get all books with keyword: https://gutendex.com/books/?search=nietzsche
 	- create array
 	- display array in console.log
-- node/express api
-	- one route: /searchbooks/{keyword}
-	- send as JSON
-- React
-	- fetch data from our api

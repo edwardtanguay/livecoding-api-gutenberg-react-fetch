@@ -15,7 +15,21 @@ function App() {
 
 	return (
 		<div className="App">
-			There are {books.length} books.
+			{books.length === 0 && (
+				<div>Loading...</div>
+			)}
+			{books.length > 0 && (
+				<>
+					There are {books.length} books:
+					<ul>
+						{books.map((book, i) => {
+							return (
+								<li key={i}>{book.title}</li>
+							)
+						})}
+					</ul>
+				</>
+			)}
 		</div>
 	)
 }

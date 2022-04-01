@@ -24,14 +24,7 @@ const getBooks = async () => {
 
 app.get('/searchbooks', async (req, res) => {
 	const books = await getBooks();
-	res.json([
-		{
-			title: "111"
-		},
-		{
-			title: "222"
-		}
-	]);
+	res.json(books);
 });
 
 app.listen(port, () => {

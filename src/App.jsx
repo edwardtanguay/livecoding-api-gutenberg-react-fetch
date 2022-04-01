@@ -6,7 +6,12 @@ function App() {
 
 	useEffect(() => {
 		(async () => {
-			const response = await fetch('http://localhost:3055/searchbooks');
+			const requestOptions = {
+				method: 'GET',
+				headers: { 'Content-Type': 'application/json' },
+				body: JSON.stringify({ searchText: 'heidegger' });
+			};
+			const response = await fetch('http://localhost:3055/searchbooks', requestOptions);
 			const books = await response.json();
 			console.log(books);
 			setBooks([...books]);

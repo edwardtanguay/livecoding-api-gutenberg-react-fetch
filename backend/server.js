@@ -11,6 +11,17 @@ app.get('/', (req, res) => {
 	res.send('This is the Gutenberg API. Use /searchbooks');
 });
 
+const getBookUrl = (rawBook) => {
+	let url = '';
+	const formatPairs = Object.entries(rawBook.formats);
+	formatPairs.forEach(([key, value]) => {
+		if (value.endsWith('.txt') || value.endsWith('.htm') || value.endsWith('.html.images')) {
+			url = value;
+		}
+	});
+	return url; 
+};
+
 const getBooks = async (searchText) => {
 	const books = [];
 	const url = `https://gutendex.com/books/?search=${searchText}`;
@@ -21,7 +32,7 @@ const getBooks = async (searchText) => {
 			title: rawBook.title,
 			imageUrl: rawBook.formats['image/jpeg'] ? rawBook.formats['image/jpeg'] : 'images/blank.png',
 			author: rawBook.authors && rawBook.authors.length > 0 ? rawBook.authors[0].name : '(no author listed)',
-			bookUrl: rawBook.formats['text/html; charset=us-ascii'] ? rawBook.formats['text/html; charset=us-ascii'] : '',
+			bookUrl: getBookUrl(rawBook) 
 		});
 	})
 	return books;

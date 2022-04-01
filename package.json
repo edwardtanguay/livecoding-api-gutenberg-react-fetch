@@ -1,26 +1,28 @@
 {
-  "name": "livecoding-api-gutenberg-react-fetch",
-  "private": true,
-  "version": "0.0.0",
-  "type": "module",
-  "scripts": {
-    "dev": "vite",
-    "api": "node_modules/.bin/nodemon backend/server.js",
-    "build": "vite build",
-    "preview": "vite preview"
-  },
-  "dependencies": {
-    "axios": "^0.26.1",
-    "cors": "^2.8.5",
-    "express": "^4.17.3",
-    "nodemon": "^2.0.15",
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2",
-    "react-icons": "^4.3.1",
-    "sass": "^1.49.10"
-  },
-  "devDependencies": {
-    "@vitejs/plugin-react": "^1.0.7",
-    "vite": "^2.9.0"
-  }
+	"name": "livecoding-api-gutenberg-react-fetch",
+	"private": true,
+	"version": "0.0.0",
+	"type": "module",
+	"scripts": {
+		"start": "run-p api dev",
+		"api": "node_modules/.bin/nodemon backend/server.js",
+		"dev": "vite",
+		"build": "vite build",
+		"preview": "vite preview"
+	},
+	"dependencies": {
+		"axios": "^0.26.1",
+		"cors": "^2.8.5",
+		"express": "^4.17.3",
+		"nodemon": "^2.0.15",
+		"react": "^17.0.2",
+		"react-dom": "^17.0.2",
+		"react-icons": "^4.3.1",
+		"sass": "^1.49.10"
+	},
+	"devDependencies": {
+		"@vitejs/plugin-react": "^1.0.7",
+		"npm-run-all": "^4.1.5",
+		"vite": "^2.9.0"
+	}
 }

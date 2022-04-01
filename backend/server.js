@@ -19,7 +19,9 @@ const getBooks = async (searchText) => {
 	rawBooks.forEach(rawBook => {
 		books.push({
 			title: rawBook.title,
-			imageUrl: rawBook.formats['image/jpeg'] ? rawBook.formats['image/jpeg'] : 'images/blank.png'
+			imageUrl: rawBook.formats['image/jpeg'] ? rawBook.formats['image/jpeg'] : 'images/blank.png',
+			author: rawBook.authors && rawBook.authors.length > 0 ? rawBook.authors[0].name : '(no author listed)',
+			bookUrl: rawBook.formats['text/html; charset=us-ascii'] ? rawBook.formats['text/html; charset=us-ascii'] : '',
 		});
 	})
 	return books;

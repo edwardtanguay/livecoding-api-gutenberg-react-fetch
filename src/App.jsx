@@ -46,9 +46,11 @@ function App() {
 						{books.map((book, i) => {
 							return (
 								<div key={i} className="book">
-									<img class="cover" src={book.imageUrl}/>
+									<img className="cover" src={book.imageUrl}/>
 									<div className="info">
 										<div className="title">{book.title}</div>
+										<div className="bookUrl">{book.bookUrl}</div>
+										<div className="author">{book.author}</div>
 									</div>
 								</div>
 							)

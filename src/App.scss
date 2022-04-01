@@ -26,4 +26,23 @@ body {
 			transform: rotate(360deg);
 		}
 	}
+
+	.message {
+		margin: 10px 0 0 0;
+	}
+
+	.book {
+		display: flex;
+		padding: 20px;
+		.cover {
+			min-width: 100px;
+			max-width: 100px;
+		}
+		.info {
+			margin: 0 0 0 10px;
+			.title {
+				font-size: 1.4rem;
+			}
+		}
+	}
 }

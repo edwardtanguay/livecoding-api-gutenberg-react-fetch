@@ -14,12 +14,12 @@ app.get('/', (req, res) => {
 const getBooks = async (searchText) => {
 	const books = [];
 	const url = `https://gutendex.com/books/?search=${searchText}`;
-	console.log(url);
 	const response = await axios.get(url);
 	const rawBooks = response.data.results;
 	rawBooks.forEach(rawBook => {
 		books.push({
-			title: rawBook.title
+			title: rawBook.title,
+			imageUrl: rawBook.formats['image/jpeg'] ? rawBook.formats['image/jpeg'] : 'images/blank.png'
 		});
 	})
 	return books;
@@ -27,7 +27,6 @@ const getBooks = async (searchText) => {
 
 app.post('/searchbooks', async (req, res) => {
 	const searchText = req.body.searchText;
-	console.log(searchText);
 	const books = await getBooks(req.body.searchText);
 	res.json(books);
 });

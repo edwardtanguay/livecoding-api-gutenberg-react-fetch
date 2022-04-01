@@ -4,9 +4,11 @@ import { FaSpinner } from 'react-icons/fa';
 
 function App() {
 	const [books, setBooks] = useState([]);
-	const [searchText, setSearchText] = useState('');
+	const [searchText, setSearchText] = useState([]);
+	const [searchingBooks, setSearchingBooks] = useState(true);
 
 	const lookupBooks = async () => {
+		setSearchingBooks(true);
 		const requestOptions = {
 			method: 'POST',
 			headers: { 'Content-Type': 'application/json' },
@@ -14,6 +16,7 @@ function App() {
 		};
 		const response = await fetch('http://localhost:3055/searchbooks', requestOptions);
 		const books = await response.json();
+		setSearchingBooks(false);
 		setBooks([...books]);
 	}
 
@@ -29,20 +32,28 @@ function App() {
 	return (
 		<div className="App">
 			<h1>Gutenberg Project Books Search</h1>
-			{books.length === 0 && (
+			{searchingBooks && (
 				<div><FaSpinner className="spinner" /></div>
 			)}
-			{books.length > 0 && (
+			{!searchingBooks && (
 				<>
 					<input className="searchText" autoFocus type="text" value={searchText} onChange={(e) => setSearchText(e.target.value)} />
 					<button className="btnSearch" onClick={handleButtonClick}>Search</button>
-					<ul>
+					{books.length === 0 && (
+						<div className="message">No books found.</div>
+					)}
+					<div className="books">
 						{books.map((book, i) => {
 							return (
-								<li key={i}>{book.title}</li>
+								<div key={i} className="book">
+									<img class="cover" src={book.imageUrl}/>
+									<div className="info">
+										<div className="title">{book.title}</div>
+									</div>
+								</div>
 							)
 						})}
-					</ul>
+					</div>
 				</>
 			)}
 		</div>

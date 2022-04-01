@@ -9,4 +9,6 @@
 - x sass
 - x top area fixed
 - x waiting spinner
-- show with more fields and graphic, links to books
+- ,, show with more fields and graphic, links to books
+	- .. dummy graphic
+	- show graphic first

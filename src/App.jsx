@@ -3,19 +3,26 @@ import './App.css'
 
 function App() {
 	const [books, setBooks] = useState([]);
+	const [searchText, setSearchText] = useState('');
+
+	const lookupBooks = async () => {
+		const requestOptions = {
+			method: 'POST',
+			headers: { 'Content-Type': 'application/json' },
+			body: JSON.stringify({ searchText })
+		};
+		const response = await fetch('http://localhost:3055/searchbooks', requestOptions);
+		const books = await response.json();
+		setBooks([...books]);
+	}
 
 	useEffect(() => {
-		(async () => {
-			const requestOptions = {
-				method: 'POST',
-				headers: { 'Content-Type': 'application/json' },
-				body: JSON.stringify({ searchText: 'mann' })
-			};
-			const response = await fetch('http://localhost:3055/searchbooks', requestOptions);
-			const books = await response.json();
-			setBooks([...books]);
-		})();
+		lookupBooks();
 	}, []);
+
+	const handleButtonClick = () => {
+		lookupBooks();
+	}
 
 	return (
 		<div className="App">
@@ -24,7 +31,11 @@ function App() {
 			)}
 			{books.length > 0 && (
 				<>
-					There are {books.length} books:
+					<input type="text" value={searchText} onChange={(e) => setSearchText(e.target.value)} />
+					<button onClick={handleButtonClick}>Search</button>
+					<div>
+						There are {books.length} books:
+					</div>
 					<ul>
 						{books.map((book, i) => {
 							return (

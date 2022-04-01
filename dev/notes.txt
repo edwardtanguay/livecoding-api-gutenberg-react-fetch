@@ -6,7 +6,7 @@
 - x with input textbox
 
 
-- .. sass
-- .. top area fixed
-- .. waiting spinner
+- x sass
+- x top area fixed
+- x waiting spinner
 - show with more fields and graphic, links to books

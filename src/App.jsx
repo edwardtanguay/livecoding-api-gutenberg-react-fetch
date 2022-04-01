@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import './App.scss'
+import { FaSpinner } from 'react-icons/fa';
 
 function App() {
 	const [books, setBooks] = useState([]);
@@ -21,6 +22,7 @@ function App() {
 	}, []);
 
 	const handleButtonClick = () => {
+		setBooks([]);
 		lookupBooks();
 	}
 
@@ -28,11 +30,11 @@ function App() {
 		<div className="App">
 			<h1>Gutenberg Project Books Search</h1>
 			{books.length === 0 && (
-				<div>Loading...</div>
+				<div><FaSpinner className="spinner" /></div>
 			)}
 			{books.length > 0 && (
 				<>
-					<input class="searchText" autoFocus type="text" value={searchText} onChange={(e) => setSearchText(e.target.value)} />
+					<input className="searchText" autoFocus type="text" value={searchText} onChange={(e) => setSearchText(e.target.value)} />
 					<button className="btnSearch" onClick={handleButtonClick}>Search</button>
 					<ul>
 						{books.map((book, i) => {
